@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Prompt Builder</title>
+  <style>
+    .prompt-builder { font-family: Segoe UI, sans-serif; margin: 20px; max-width: 800px; }
+    .prompt-builder h2 { color: #2c3e50; }
+    .prompt-module { margin-bottom: 20px; }
+    .prompt-module label { font-weight: bold; display: block; margin-top: 10px; }
+    .prompt-module input, .prompt-module select, .prompt-module textarea {
+      width: 100%; padding: 5px; font-size: 14px;
+    }
+    button { padding: 10px 15px; font-size: 14px; background-color: #2c3e50; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #1a252f; }
+  </style>
+</head>
+<body>
+  <div class="prompt-builder">
+    <h2>Dynamic Prompt Builder</h2>
+    <div class="prompt-module">
+      <label for="style">Select Visual Style:</label>
+      <select id="style">
+        <option>Painterly Cinematic Realism</option>
+        <option>Cinematic Etched Linework</option>
+        <option>Graphic Noir Print Style</option>
+      </select>
+    </div>
+
+    <div class="prompt-module">
+      <label>Art Style Details:</label>
+      <textarea id="artStyle" rows="2" placeholder="[Describe the visual rendering, linework, or color mode]"></textarea>
+    </div>
+
+    <div class="prompt-module">
+      <label>Character Description:</label>
+      <textarea id="character" rows="2" placeholder="[Age, gender, role, identity markers, emotional/physical traits]"></textarea>
+    </div>
+
+    <div class="prompt-module">
+      <label>Clothing & Gear:</label>
+      <textarea id="clothingAndGear" rows="2" placeholder="[Clothing, props, accessories]"></textarea>
+    </div>
+
+    <div class="prompt-module">
+      <label>Setting / Background:</label>
+      <textarea id="setting" rows="2" placeholder="[Location type, landmarks, environment descriptors]"></textarea>
+    </div>
+
+    <div class="prompt-module">
+      <label>Lighting & Mood:</label>
+      <textarea id="lightingAndMood" rows="2" placeholder="[Light source, emotional tone, atmospheric effect]"></textarea>
+    </div>
+
+    <div class="prompt-module">
+      <label>Composition & Framing:</label>
+      <textarea id="composition" rows="2" placeholder="[Shot type, angle, focal emphasis]"></textarea>
+    </div>
+
+    <div class="prompt-module">
+      <label>Symbolic Detail:</label>
+      <textarea id="symbolicDetail" rows="2" placeholder="[Symbolic object, visual motif, narrative cue]"></textarea>
+    </div>
+
+    <div class="prompt-module">
+      <label>🧠 Assembled Prompt:</label>
+      <textarea id="assembledPrompt" rows="8" readonly style="background:#f4f4f4;"></textarea>
+    </div>
+
+    <button onclick="assemblePrompt()">Assemble Prompt</button>
+  </div>
+
+  <script>
+    function assemblePrompt() {
+      const style = document.getElementById("style").value;
+      const artStyle = document.getElementById("artStyle").value;
+      const character = document.getElementById("character").value;
+      const clothingAndGear = document.getElementById("clothingAndGear").value;
+      const setting = document.getElementById("setting").value;
+      const lightingAndMood = document.getElementById("lightingAndMood").value;
+      const composition = document.getElementById("composition").value;
+      const symbolicDetail = document.getElementById("symbolicDetail").value;
+
+      const prompt = `Style: ${style}
+
+Art Style: ${artStyle}
+
+Character: ${character}
+
+Clothing & Gear: ${clothingAndGear}
+
+Setting: ${setting}
+
+Lighting & Mood: ${lightingAndMood}
+
+Composition: ${composition}
+
+Symbolic Detail: ${symbolicDetail}`;
+      document.getElementById("assembledPrompt").value = prompt;
+    }
+  </script>
+</body>
+</html>
